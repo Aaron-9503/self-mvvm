@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>属于自己的MVVM</title>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{proson.firstName}}--{{proson.lastName}}</p>
+        <p v-html="htmlStr"></p>
+        <p v-text="proson.firstName"></p>
+        <p>{{msg}}</p>
+        <p v-on:click="handle">点击事件</p>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <input type="text" v-model="proson.lastName">
+    </div>
+    <script src="./Observer.js"></script>
+    <script src="./Kvue.js"></script>
+    <script>
+        const kvue = new Kvue({
+            el: '#app',
+            data: {
+                proson: {
+                    firstName: '王',
+                    lastName: '小名'
+                },
+                msg: '双向绑定的msg',
+                htmlStr: `<span>v-html指令的渲染</span>`,
+            },
+            methods: {
+                handle() {
+                    this.proson.firstName = '23223'
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>
